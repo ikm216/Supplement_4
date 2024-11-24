@@ -25,19 +25,28 @@ def convertTocds(list):
     """
      return ",".join(list)
 
+
+
 def test_should_return_next_ten_numbers():
     assert next_10(2) == "3,4,5,6,7,8,9,10,11,12"
 
 def test_should_return_comma_delimited_string():
     assert convertTocds(["apple,bannana,orange"]) == "apple,bannana,orange"
 
-def test_csv_writing(tmp):
-    filename = tmp / "test_write.csv"
+def test_csv_writing(tmp_path):
+    filename = tmp_path / "test_write.csv"
 
-    headers =  convertTocds(["apple,bannana,orange"])
-    value = next_10(2)
+    headers = ["apple,bannana,orange"]
+    num = 2
 
-    write_csv(filename, headers, value)
+    write_csv(filename, headers, num)
 
-    assert row[0] == headers
-    assert rows[1:] == [row.split(",") for row in value]
+    with open(filename, mode = 'r') as file:
+        read = csv.reader(file)
+        rows = list(read)
+
+    test = convertTocds(headers).split(",")
+    test2 = next_10(num).split(",")
+
+    assert rows[0] == test
+    assert rows[1:] == test2
