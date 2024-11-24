@@ -1,3 +1,6 @@
+import csv
+import pytest
+
 def next_10(num):
     """
     Given a number, gets the next 10 numbers as a comma-delimited string.
@@ -27,3 +30,14 @@ def test_should_return_next_ten_numbers():
 
 def test_should_return_comma_delimited_string():
     assert convertTocds(["apple,bannana,orange"]) == "apple,bannana,orange"
+
+def test_csv_writing(tmp):
+    filename = tmp / "test_write.csv"
+
+    headers =  convertTocds(["apple,bannana,orange"])
+    value = next_10(2)
+
+    write_csv(filename, headers, value)
+
+    assert row[0] == headers
+    assert rows[1:] == [row.split(",") for row in value]
