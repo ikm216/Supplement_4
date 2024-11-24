@@ -1,4 +1,13 @@
 def next_10(num):
+    """
+    Given a number, gets the next 10 numbers as a comma-delimited string.
+
+    Args:
+        num: The starting number.
+
+    Returns:
+        Comma-delimited string of the next 10 numbers.
+    """
     return ",".join(str(num + i) for i in range(1, 11))
 
 def test_should_return_next_ten_numbers():
