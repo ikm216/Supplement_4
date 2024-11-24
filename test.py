@@ -49,4 +49,4 @@ def test_csv_writing(tmp_path):
     test2 = next_10(num).split(",")
 
     assert rows[0] == test
-    assert rows[1:] == test2
+    assert rows[1] == test2
