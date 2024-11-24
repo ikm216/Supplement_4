@@ -26,6 +26,17 @@ def convertTocds(list):
      return ",".join(list)
 
 def write_csv(filename, headers, num):
+    """
+    Writes headers in function 2 and value in function 1 to a CSV file.
+
+    Args:
+        filename: The name of the CSV file.
+        headers: A list of strings to convert to headers.
+        num: The starting number for generating the value.
+
+    Returns:
+        Writes in the csv file
+    """
     with open(filename, mode = 'w', newline='') as file:
         write = csv.writer(file)
 
