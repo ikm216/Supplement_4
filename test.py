@@ -25,7 +25,15 @@ def convertTocds(list):
     """
      return ",".join(list)
 
+def write_csv(filename, headers, num):
+    with open(filename, mode = 'w', newline='') as file:
+        write = csv.writer(file)
 
+        headers = convertTocds(headers).split(",")
+        write.writerow(headers)
+
+        row = next_10(num).split(",")
+        write.writerow(row)
 
 def test_should_return_next_ten_numbers():
     assert next_10(2) == "3,4,5,6,7,8,9,10,11,12"
